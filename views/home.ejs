@@ -1,0 +1,84 @@
+<%- layout("./layouts/boilerplate") %>
+<span id="title">Dashboard</span>
+<div class="container">
+    <div class = "mainThree">
+        <h5>Daily Cash balance<span> <%= cashSales %> </span></h5>
+        <h5>Total sales of the month(l)<span><%= totalSales %> </span></h5>
+        <h5>No. of credits pending<span> <%= customerCredit.length %> </span></h5>
+    </div>
+    <h4 id="h4">Purchase Orders</h4>
+    <table class = "purchaseOrders">
+        <tr>
+            <th>Date</th>
+            <th>Order Name</th>
+            <th>Amount</th>
+        </tr>
+        <% const Currentdate = new Date();%> 
+        <% currentMonth = Currentdate.getMonth()+1 %> 
+        <% for(let purchaseOrder of purchaseOrders){%> 
+            <% let month = purchaseOrder.date.getMonth()+1%> 
+            <% if(month == currentMonth){ %>
+                <%let date=purchaseOrder.date%>
+                <%let newDate = date.toDateString() %> 
+                <tr>
+                    <td><%=newDate %></td>
+                    <td>Creambell/Pepsi products</td>
+                    <td><%= purchaseOrder.grandTotal %> </td>
+                </tr>
+
+       <% } %> 
+    <% } %> 
+        
+    </table>
+</div>
+<div class="tablewrap">
+    <table class="topCE">
+        <caption id="subTitle1">TOP CE</caption>
+        <tr>
+            <th>CE Name</th>
+            <th>Total Sales</th>
+
+        </tr>
+        <% for(let i=0; i<newArray.length; i++){%>
+            <tr>
+                <td><%for(let sale of totalSalesCE){%>
+                        <% if(newArray[i] == sale){%>
+                            <% let index = totalSalesCE.indexOf(sale) %> 
+                            <%= printedNames[index]%>
+                        <% } %> 
+
+                <% } %> 
+                </td>
+                <td><%= newArray[i] %> </td>
+            </tr>
+        <% } %> 
+    </table>
+    
+    <table class="topSelling">
+        <caption id="subTitle1">Top Selling item</caption>
+        <tr>
+            <th>Name</th>
+            <th>Total sales</th>
+        </tr>
+        <% for(let i=0; i<orderedArray.length; i++){%>
+            <tr>
+                <td><%for(let sale of productSales){%>
+                        <% if(orderedArray[i] == sale){%>
+                            <% let index = productSales.indexOf(sale) %> 
+                            <%= dairyProducts[index]%>
+                        <%} %> 
+
+                <% } %> 
+                </td>
+                <td><%= orderedArray[i] %> </td>
+            </tr>
+        <% } %> 
+    </table>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<%- layout("./layouts/boilerplate") %> 
+
+<style>
+    h3{
+        font-size: 25px;
+        
+    }
+    .container{
+        text-align: center;
+        font-size: 15px;
+        color: black;
+        margin-top: 20px;
+    }
+
+    .container li{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    button{
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    a{
+        color:black;
+    }
+    
+</style>
+<div class="container">
+    <h3><%=customer.name%></h3>
+    <ul>
+        <li>Area: <%=customer.area%></li>
+        <li>Avgerage purchase: <%=customer.avgSales%></li>
+        <li>Contact: <%=customer.contact%></li>
+        <li>CE assigned: <%=customer.CEAssigned%></li>
+    </ul>
+    
+    <button><a href = "/customers/update/<%= customer._id %> ">Update info</a></button>
+    
+    <form action = "/customers/delete/<%= customer._id %>?_method=DELETE" method="POST">
+        <button>Delete</button>
+    </form>
+    
+    <button><a href= "/customers/">Back to all customers</a></button>
+</div>

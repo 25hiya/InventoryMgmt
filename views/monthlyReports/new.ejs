@@ -1,0 +1,90 @@
+<%-layout("./layouts/boilerplate") %> 
+<style>
+    table, th, td, tr{
+        border: 1px solid;
+    }
+    #report{
+        text-align: center;
+        color: black;
+    }
+    #category{
+        text-align: center;
+        color: black;
+        margin: 20px;
+    }
+
+</style>
+<h2 id="report">
+    <% var today = new Date() %> 
+    <%= today.toLocaleString("default", {month:"long"})%> Report 
+</h2> 
+<p id="category">Category: Creambell</p>
+<table>
+    <tr>
+        <th>Products</th>
+        <th colspan="2">Purchase</th>
+        <th colspan="2">Sales</th>  
+    </tr>
+    <tr>
+        <th></th>
+        <th>Qty</th>
+        <th>Amt</th>
+        <th>Qty</th>
+        <th>Amt</th>
+    </tr>
+    <% for(let i=0; i<dairyProducts.length; i++){%>
+        <tr>
+            <td><%= dairyProducts[i] %> </td>
+            <td><%=purchaseQty[i] %></td> 
+            <td><%= purchaseAmts[i] %> </td>
+            <td><%= salesQty[i] %> </td>
+            <td><%= salesAmts[i] %> </td>
+        </tr>
+    <%} %> 
+    <tr>
+        <td><b>Total</b></td>
+        <td><%= purchaseQty.reduce((a,b)=> a+b,0) %> </td>
+        <td><%= purchaseAmts.reduce((a,b)=>a+b,0) %> </td>
+        <td><%=salesQty.reduce((a,b)=>a+b,0)%></td>
+        <td><%=salesAmts.reduce((a,b)=>a+b,0) %> </td>
+    </tr>
+    <tr>
+        <th>Gross Profit</th>
+        <th colspan="4"></th>
+    </tr>
+</table>
+<p id="category">Category: Pepsi</p>
+<table>
+    <tr>
+        <th>Products</th>
+        <th colspan="2">Purchase</th>
+        <th colspan="2">Sales</th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>Qty</th>
+        <th>Amt</th>
+        <th>Qty</th>
+        <th>Amt</th>
+    </tr>
+    <% for(let i=0; i<beverageProducts.length; i++){%>
+        <tr>
+            <td><%= beverageProducts[i] %> </td>
+            <td><%=beveragePurchaseQty[i] %></td> 
+            <td><%= beveragePurchase[i] %> </td>
+            <td><%= beverageSalesQty[i] %> </td>
+            <td><%= beverageSales[i] %> </td>
+        </tr>
+    <%} %> 
+    <tr>
+        <td><b>Total</b></td>
+        <td><%= beveragePurchaseQty.reduce((a,b)=> a+b,0) %> </td>
+        <td><%= beveragePurchase.reduce((a,b)=>a+b,0) %> </td>
+        <td><%=beverageSalesQty.reduce((a,b)=>a+b,0)%></td>
+        <td><%=beverageSales.reduce((a,b)=>a+b,0) %> </td>
+    </tr>
+    <tr>
+        <th>Gross Profit</th>
+        <th colspan="4"></th>
+    </tr>
+</table>

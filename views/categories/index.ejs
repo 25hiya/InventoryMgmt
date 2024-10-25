@@ -1,0 +1,29 @@
+<%- layout("./layouts/boilerplate") %> 
+
+<style>
+    h3{
+        text-align: center;
+        font-size: 25px;
+        margin-top: 20px;
+    }
+
+    .container{
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    .container a{
+        color: black;
+        transition: border-radius, background-color 0.8s;
+        padding: 8px;
+    }
+
+</style>
+
+<h3>All categories</h3>
+
+<% for(let category of categories){%>
+    <li class="container"><a href = "/categories/details/<%= category %> "><%= category %> </a></li>
+<% } %> 

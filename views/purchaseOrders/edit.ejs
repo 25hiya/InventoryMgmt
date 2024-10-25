@@ -1,0 +1,58 @@
+<%- layout("./layouts/boilerplate") %> 
+<style>
+      .container{
+        max-width: 800px;
+        margin-left: 480px;
+        margin-top: 20px;
+    }
+
+    input, select{
+        width: 160px;
+        padding: 8px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    button{ 
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 10px;
+    }
+</style>
+<div class="container">
+    <form method="POST" action="/purchaseOrders/<%=foundOrders._id%>/update?_method=PUT">
+        <table id = "table">
+            
+            <h5>Date: <input type = "date" name = "date" id = "date" value="<%= foundOrders.date.toISOString().slice(0,10) %>"></h5>
+            <tr>
+                <th>Items Ordered</th>
+                <th>Price Pu</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <% for(let i=0; i<foundOrders.itemsOrdered.length; i++){%>
+                <tr id="order1" class="order">
+                        <td> 
+                            <input type="text" name="itemsOrdered" value="<%= foundOrders.itemsOrdered[i] %>">
+                         </td>
+                         <td>
+                             <input type="text" name="pricePu" id="price" class="eventListener" value="<%= foundOrders.pricePu[i] %> ">
+                         </td>
+                         <td><input type="number" name = "quantity" id = "qty" class="eventListener" value="<%= foundOrders.quantity[i] %>"></td>
+                         <td><input type = "number" name = "totalForEach" id = "total" value="<%=foundOrders.totalForEach[i]%>"></td>
+                </tr>  
+            <%} %>            
+        
+        </table>
+        <button id="orderMore">Add more items</button>
+        <h4>Grand Total: <input type = "number" name = "grandTotal" id="grandTotal" value="<%= foundOrders.grandTotal %>"></h4>
+        
+        <textarea cols="30" rows="10" name="remarks" value="<%= foundOrders.remarks %>">Remarks</textarea>
+        <button>Save</button>
+    </form>
+</div>
+
+    <script src="../../public/js/purchaseOrder.js">
+    </script>

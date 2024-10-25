@@ -1,0 +1,75 @@
+<%- layout("./layouts/boilerplate") %> 
+
+<style>
+    h3{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .container{
+        text-align: center;
+    }
+
+    .container ul{
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    input{
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    #noborder{
+        border: none;
+    }
+
+    button{
+        margin-top: 20px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+    }
+</style>
+
+<h3>Purchase orders</h3>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Total amount</th>
+        </tr>
+        <% for(let purchaseOrder of purchaseOrders){%>
+            <tr>
+                <ul>                                                 
+                    <%if(purchaseOrder.date){ %>
+                         <%let newDate = purchaseOrder.date.toDateString()%>
+                            <li>
+                                <td><%= newDate%></td>
+                                <td>K<%=purchaseOrder.grandTotal%></td>
+                                <td id="noborder"><a href="/purchaseOrders/<%=purchaseOrder.id%>">Details</a></td>
+                            </li>
+
+                    <%}else{%>
+                        <li>
+                            <td>K<%=purchaseOrder.grandTotal%></td>
+                            <td><a href="/purchaseOrders/<%=purchaseOrder.id%>">Details</a></td>
+                        </li>
+                    <%}%>
+                </ul>
+            </tr>
+        <% } %>
+    </table>
+   
+    <button><a href="/purchaseOrders/new">Create new purchase order</a></button>
+
+</div>
+
+<script>
+    var checkbox = document.querySelectorAll("#delivered");
+    
+</script>
+
+

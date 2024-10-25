@@ -1,0 +1,47 @@
+<%- layout("./layouts/boilerplate") %> 
+
+<style>
+    .container{
+        text-align: center;
+        margin-left: 300px;
+    }
+
+    #button{
+        border:none;
+    }
+    
+    button{
+        margin: 10px;
+        padding: 8px;
+        text-align: center;
+        border-radius: 10px;
+    }
+</style>
+<div class="container">
+    <table>
+        <tr>
+            <th>Customer</th>
+            <th>CE Assigned</th>
+            <th>Total sales</th>
+            <th>Amount pending</th>
+        </tr>
+        <% for(let customerCredit of customerCredits){%>
+            <tr>
+                <td><%= customerCredit.name %></td>
+                <td><%= customerCredit.CEAssigned %></td>
+                <td><%= customerCredit.totalSales %></td>
+                <td><%= customerCredit.amtPending %></td>
+                <td id="button">
+                    <form action="/customerCredits/<%=customerCredit._id%>/delete?_method=DELETE" method="POST">
+                        <button id="amtCleared">Amt. Cleared</button>
+                    </form>
+                </td>
+            </tr>
+            
+        <%} %> 
+        
+    </table>
+    <button><a href="/customerCredits/new">Add New credit</a></button>
+</div>
+   
+    

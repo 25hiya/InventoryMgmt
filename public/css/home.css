@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin:0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+    background-color:rgb(225, 223, 223)
+}
+.navbar{
+    display: flex;
+    position: relative;
+}
+
+.navbar .sidebar{
+    width: 250px;
+    height: 100%;
+    padding: 30px 0;
+    background-color: rgb(18, 33, 47);
+    position: fixed;
+}
+
+.navbar .sidebar h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar ul{
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color: rgb(18, 33, 47);
+}
+
+.sidebar li a{
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: border-radius, background-color 0.8s;
+    color: white;
+}
+
+h2{
+    color: white;
+}
+
+li a:hover{
+    background-color: #555;
+    color: white;
+}
+
+.tablewrap{
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+#subTitle1{
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.topCE{
+    margin-left: 500px;
+    margin-right: 100px;
+}
+
+.topSelling{
+    margin-right: 250px;
+}
+
+#title{
+    font-size: 25px;
+    margin-left: 270px;
+    font-weight: bold;
+}
+
+.mainThree h5{
+    font-size: 18px;
+    text-align:center;
+    height: 100px;
+    width: 300px;
+    background-color: darksalmon;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+.container{
+    margin-left: 205px;
+}
+.mainThree{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly ;
+    margin-top: 25px;
+}
+
+.mainThree span{
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+table, th, tr, td{
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-left:auto;
+    margin-right: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+#h4{
+    margin-left: 600px;
+    margin-top: 40px;
+}
+
+#logout{
+    background-color: rgb(18, 33, 47);
+    border: none;
+    
+}

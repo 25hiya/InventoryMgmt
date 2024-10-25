@@ -1,0 +1,61 @@
+<%- layout("./layouts/boilerplate") %> 
+<style>
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    li{
+        list-style: none;
+    }
+    #listItems{
+        padding: 15px;
+        border: 1px solid black;
+        margin: 10px;
+        transition: box-shaodw 0.8s;
+    }
+    h3{
+        text-align: center;
+        margin-bottom: 20px;
+        margin-left: 200px;
+        font-size: 25px;
+        margin-top: 20px;
+    }
+
+    #listItems:hover{
+        border: none;
+        box-shadow: 10px 10px 5px rgb(158, 158, 158);
+    }
+
+    #ceName{
+        font-size: 20px;
+    }
+
+    #newSalesSheet{
+        margin-left: 800px;
+        margin-top: 20px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    
+    a{
+        color: black;
+    }
+</style>
+
+<h3>All sales sheets</h3>
+<% for(let printedName of printedNames){%>
+    <div class="container">
+        <h5 id="ceName"><%= printedName %> </h5>
+        <% for(let ss of salesSheets){%>
+            <% if(ss.ceName == printedName){%>
+                <% let date = ss.date %> 
+                <a href="/salesSheets/<%=ss._id%>" id="listItems"><li><%=date.toDateString()%></li></a> 
+            <%} %> 
+         <%} %> 
+    </div>
+<%} %> 
+<button id="newSalesSheet"><a href="/salesSheets/new">Add a new sales sheet</a></button>
+
+   

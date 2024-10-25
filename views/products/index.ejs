@@ -1,0 +1,26 @@
+<%- layout("./layouts/boilerplate")%> 
+<style>
+    .container{
+        margin-left: 300px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .container a{
+        color: black;
+        transition: border-radius, background-color 0.8s;
+        padding: 10px;
+    }
+    button{
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+</style>
+<% for(let product of products){ %>
+    <li class="container"><a href = "/products/<%=product._id%>"><%= product.product %></a</li>
+<%} %> 
+
+<button class="container"><a href="/products/new">Add a new product</a></button>

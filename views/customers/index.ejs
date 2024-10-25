@@ -1,0 +1,37 @@
+<%- layout("./layouts/boilerplate") %> 
+<style>
+    .container{
+        text-align: center;
+        margin-left: 300px;
+    }
+
+    h3{
+        font-size:25px;
+    }
+
+    .container li{
+        margin: 10px 10px;
+        font-size: 20px;
+    }   
+
+    .container a{
+        color: black;
+    }
+
+    button{
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container">
+    <h3>Customer List</h3>
+    <% for(let customer of customers){ %>
+        <li><a href="/customers/<%=customer._id%>"><%= customer.name %> </a></li>
+    <% }%> 
+    
+    
+    <button><a href="/customers/new">Add a new customer</a></button>
+</div>

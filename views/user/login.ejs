@@ -1,0 +1,53 @@
+<style>
+    body{
+        background-color: rgb(225, 223, 223);
+    }
+    .login{
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .login-form {
+        position: absolute;
+        margin: 70px 600px;
+        display: block;
+        max-width: 800px;
+        padding: 16px;
+        background-color: white;
+        border: 1px solid black;
+
+    }
+
+    input[type=text], input[type=password]{
+        display: block;
+        width: 300px;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    button{
+        font-weight:bold;
+        font-size: 15px;
+        padding: 10px 20px;
+        background-color: #b74141;
+    }
+
+    p{
+        float: right;
+    }
+</style>
+<p><a href="/register">Register</a></p>
+<div class="login">
+    <form class= "login-form" method="POST" action="/login">
+        <label for="username">Username
+            <input type="text" name="username">
+        </label>
+        <label for="password">Password
+            <input type="password" name="password">
+        </label>
+        <button>Login</button>
+    </form>
+</div>
+    

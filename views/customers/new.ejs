@@ -1,0 +1,58 @@
+<%- layout("./layouts/boilerplate") %> 
+
+<style>
+    h3{
+        font-size: 25px;
+        margin-top: 20px;
+        
+    }
+    .container{
+        text-align: center;
+        display: block;
+    }
+
+    .addCustomer{
+        position: absolute;
+        margin: 70px 500px;
+        display: block;
+        max-width: 800px;
+        padding: 16px;
+        background-color: white;
+        border: 1px solid black;
+    }
+
+    select, input[type=text], input[type=number]{
+        display: block;
+        width: 300px;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+</style>
+
+<div class="container">
+    <h3>Add a new customer</h3>
+    <form action = "/customers/" method = "post" class="addCustomer">
+        <label for = "name">Customer name</label>
+        <input type = "text" id = "name" name = "name">
+
+        <label for = "area">Area</label>
+        <input type = "text" id="area" name="area">
+
+        <label for = "avgSales">Average Purchase</label>
+        <input type = "number" id = "avgSales" name = "avgSales">
+
+        
+        <label for = "contact">Contact No.</label>
+        <input type = "number" id = "contact" name = "contact">
+
+        <label for = "CEAssigned">CE assigned</label>
+        <input type = "text" id="CEAssigned" name = "CEAssigned">
+
+        <button>Submit</button>
+        <button><a href="/customers/">Cancel</a></button>
+        
+    </form>
+
+</div>

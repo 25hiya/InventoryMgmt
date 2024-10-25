@@ -1,0 +1,73 @@
+<%- layout("./layouts/boilerplate") %> 
+<style>
+    .container{
+        max-width: 100px;
+        margin-left: 300px;
+        margin-top: 20px;
+    }
+
+    input, select{
+        width: 160px;
+        padding: 8px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    button{ 
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 10px;
+    }
+    #moreSubtractions, #cashSales, #remarks, #gTotal{
+        border: none;
+    }
+</style>
+<div class="container">
+    <form method = "post" action="/salesSheets/" >
+        <h4>CE Name: <input type = "text" name = "ceName" id = "ceName"></h4>
+        <h5>Date: <input type = "date" name = "date" id = "date"></h5>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>  
+                <th>Qty out</th>
+                <th>Returned</th>
+                <th>Sales</th>
+                <th>Total</th>
+            </tr>
+            <% for(let product of products){ %>
+                <tr>
+                    <td><input id = "productName" name = "productName" value = "<%= product.product %>"></td>
+                    <td><input id = "price" class = "eventListener" name = "price" value = "<%= product.price %>"></td>
+                    <td><input id= "out" class = "eventListener" name="out" type = "number"></td>
+                    <td><input id="returned" class = "eventListener" name="returned" type = "number"></td>
+                    <td><input id= "sales" name="sales" type = "number"></td>
+                    <td><input id= "total" name="total" type = "number"></td>
+                </tr>
+            <% } %> 
+            <tr>
+                <td id="gTotal">Grand Total: <input name = "grandTotal" id = "grandTotal"></td>
+            </tr>
+            <tr>
+                <td id="moreSubtractions">
+                    <label for="deductions">Any deductions?</label>
+                    <input type="number" name="deductions" id="deductions" oninput="calculatingCashSales()">
+                </td>
+                <td id="moreSubtractions"><button id="sub">More deductions</button></td>
+            </tr>
+            <tr>
+                <td id="cashSales">Cash sales: <input type="number" name="collections" id="collections"></td>
+            </tr>
+            <tr>
+                <td id="remarks"><textarea cols = "40" rows = "10" name = "remarks">Remarks</textarea></td>
+            </tr>
+            
+        </table>
+        <button>Save</button>
+    </form>
+</div>
+
+       
+        <script src = "/js/salesSheets.js"></script>

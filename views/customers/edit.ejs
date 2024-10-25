@@ -1,0 +1,54 @@
+<%- layout("./layouts/boilerplate") %> 
+
+<style>
+    h3{
+        font-size: 25px;
+        margin-top: 20px;
+        
+    }
+    .container{
+        text-align: center;
+        display: block;
+    }
+
+    .editCustomer{
+        position: absolute;
+        margin: 70px 500px;
+        display: block;
+        max-width: 800px;
+        padding: 16px;
+        background-color: white;
+        border: 1px solid black;
+    }
+
+    select, input[type=text], input[type=number]{
+        display: block;
+        width: 300px;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+}
+</style>
+<div class="container">
+    <h3>Update customer info</h3>
+    <form action = "/customers/update/<%=foundCustomer._id%>?_method=PUT" method = "post" class="editCustomer">
+        <label for = "name">Customer name</label>
+        <input type = "text" id = "name" name = "name" value = "<%= foundCustomer.name %> ">
+
+        <label for = "area">Area</label>
+        <input type = "text" id="area" name="area" value = "<%= foundCustomer.area %> ">
+
+        <label for = "avgSales">Average Purchase</label>
+        <input type = "number" id = "avgSales" name = "avgSales" value = <%= foundCustomer.avgSales %>>
+
+
+        <label for = "contact">Contact No.</label>
+        <input type = "number" id = "contact" name = "contact" value = <%= foundCustomer.contact %>>
+
+        <label for = "CEAssigned">CE assigned</label>
+        <input type = "text" id="CEAssigned" name = "CEAssigned" value="<%= foundCustomer.CEAssigned %> ">
+
+        <button>Submit</button>
+    </form>
+</div>

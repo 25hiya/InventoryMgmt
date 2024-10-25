@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Comapny Name</title>
+        <link type = "text/css" rel = "stylesheet" href="../../public/css/home.css">
+    </head>
+    <body>
+        <div class="navbar">
+          <div class="sidebar">
+            <h2>Company Name</h2>
+            <ul>
+              <li><a href="/home/home">Dashboard</a></li>
+              <li><a href="/products">Products</a></li>
+              <li><a href="/categories">Cateogories</a></li>
+              <li><a href="/purchaseOrders">Purchase Orders</a></li>
+              <li><a href="/salesSheets">Sales sheets</a></li>
+              <li><a href="/monthlyReports/new">Reports</a></li>
+              <li><a href="/customerCredits">Credits</a></li>
+              <li><a href="/customers">Customers</a></li>
+              <form action="/logout" method="post">
+                <button id="logout"><li><a>Sign out</a></li></button>
+              </form>
+            </ul>
+          </div>
+        </div>
+        
+        <main>
+        <%- body %>
+        </main>
+    </body>
+</html>

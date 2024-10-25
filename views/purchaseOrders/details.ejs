@@ -1,0 +1,61 @@
+<%- layout("./layouts/boilerplate") %> 
+
+<style>
+    th, tr, td{
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-left:auto;
+    margin-right: auto;
+    padding: 10px;
+    text-align: center;
+    }
+
+    .container{
+        text-align: center;
+    }
+
+    h4{
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    button{
+        margin-top: 20px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    a{
+        color: black;
+    }
+</style>
+
+<div class="container">
+    <% if(foundOrders.date){%>
+        <% let newDate = foundOrders.date.toDateString() %> 
+        <h4>Date: <%= newDate %> </h4>
+    <%} %> 
+    
+    <table>
+        <tr>
+            <th>Products</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        <% for(let products of foundOrders.itemsOrdered){%>
+            <tr>
+                <% let indexPos = foundOrders.itemsOrdered.indexOf(products) %> 
+                <td><%= products %> </td>
+                <td><%= foundOrders.pricePu[indexPos] %> </td>
+                <td><%= foundOrders.quantity[indexPos] %> </td>
+                <td><%= foundOrders.totalForEach[indexPos] %> </td>
+            </tr>
+        <%}%> 
+    </table>
+    <h4>Remarks: </h4>
+    <p><%= foundOrders.remarks %></p>
+    <button><a href="/purchaseOrders/">Back to all Purchase orders</a></button>
+    <button><a href="/purchaseorders/<%= foundOrders._id %>/edit">Edit</a></button>
+</div>

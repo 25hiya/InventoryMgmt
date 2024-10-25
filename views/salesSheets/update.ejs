@@ -1,0 +1,80 @@
+<%- layout("./layouts/boilerplate") %> 
+<style>
+    .container{
+        max-width: 100px;
+        margin-left: 300px;
+        margin-top: 20px;
+    }
+
+    input, select{
+        width: 160px;
+        padding: 8px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    button{ 
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    #moreSubtractions, #cashSales, #remarks, #grandTotal{
+        border: none;
+    }
+</style>
+<div class="container">
+    <form action="/salesSheets/<%=salesSheet.id%>/update?_method=PUT" method = "post">
+        <h4>CE Name: <input type = "text" name = "ceName" id = "ceName" value="<%= salesSheet.ceName %>"></h4>
+        <h5>Date: <%= newDate %> </h5>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty out</th>
+                <th>Returned</th>
+                <th>Sales</th>
+                <th>Total</th>
+            </tr>
+            <%let products = salesSheet.productName%> 
+            <% for(let product of products){%> 
+                <% let index= products.indexOf(product) %> 
+                <tr>
+                    <td><input id = "productName" name = "productName" value = "<%= product %>"></td>
+                    <td><input id = "price" class = "eventListener" name = "price" value = "<%= salesSheet.price[index]%>"></td>
+                    <td><input id= "out" class = "eventListener" name="out" type = "number" value="<%= salesSheet.out[index] %>"></td>
+                    <td><input id="returned" class = "eventListener" name="returned" type = "number" value="<%= salesSheet.returned[index] %>"></td>
+                    <td><input id= "sales" name="sales" type = "number" value="<%= salesSheet.sales[index] %>"></td>
+                    <td><input id= "total" name="total" type = "number" value="<%= salesSheet.total[index] %>"></td>
+                </tr>
+            <% } %> 
+            <tr>
+                <td id="grandTotal">Grand Total: <input name = "grandTotal" id = "grandTotal" value="<%=salesSheet.grandTotal%>"></td>
+            </tr>
+            <tr>
+                <td id="moreSubtractions">
+                    <label for="deductions">Any deductions?</label>
+                    <% for(let deduction of salesSheet.deductions){%> 
+                        <input type="number" name="deductions" id="deductions" onchange="calculatingCashSales()" value="<%=deduction%>">
+                    <%}%>   
+                </td>
+                <td id="moreSubtractions"><button id="sub">More deductions</button></td>
+            </tr>
+            <tr>
+                <td id="cashSales">
+                    <% var cashValue = parseInt(salesSheet.collections)%> 
+                    Cash sales: <input type="number" name="collections" id= "collections" value="<%=cashValue%>">
+                </td>
+            </tr>
+            <tr>
+                <td id="remarks"><textarea cols = "40" rows = "10" name = "remarks"><%= salesSheet.remarks %> </textarea></td>
+            </tr>
+        </table>
+        <button>Save</button>
+    </form>
+    <a href="/salesSheets/"><button>Back to all sales sheets</button></a>
+</div>
+<script src = "/js/salesSheets.js"></script>
+    
